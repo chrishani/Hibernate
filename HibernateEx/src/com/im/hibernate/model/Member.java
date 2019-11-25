@@ -1,24 +1,38 @@
 package com.im.hibernate.model;
 
+import java.util.Date;
+
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 @Entity
-@Table(name = "user")
+@Table(name="user")
 public class Member {
 
-	@Id
 	@GeneratedValue
+	@Id
 	int id;
+	@Basic(optional=false)
 	String name;
 	String address;
-	String email;
-	String password;
-	@Column(name = "contact")
-	String mobile;
+	@Column(name="tp")
+	String telephone;
+	
+	Date joinDate;
+	
+	@Temporal(TemporalType.DATE)
+	Date birthDay;
+	
+	@Transient
+	int count;
+	
 	
 	public int getId() {
 		return id;
@@ -38,24 +52,31 @@ public class Member {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getEmail() {
-		return email;
+	public String getTelephone() {
+		return telephone;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
-	public String getPassword() {
-		return password;
+	public Date getJoinDate() {
+		return joinDate;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setJoinDate(Date joinDate) {
+		this.joinDate = joinDate;
 	}
-	public String getMobile() {
-		return mobile;
+	public int getCount() {
+		return count;
 	}
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
+	public void setCount(int count) {
+		this.count = count;
 	}
+	public Date getBirthDay() {
+		return birthDay;
+	}
+	public void setBirthDay(Date birthDay) {
+		this.birthDay = birthDay;
+	}
+	
 	
 	
 }
